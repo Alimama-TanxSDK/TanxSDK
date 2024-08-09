@@ -8,7 +8,6 @@
 
 #import "TXAdSlotModel.h"
 
-
 @interface TXAdTableScreenSlotModel : TXAdSlotModel
 
 /**
