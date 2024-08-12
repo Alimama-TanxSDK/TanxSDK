@@ -9,8 +9,8 @@ TanxSDK is a product provided by Alibaba Group for monetizing advertisements for
   spec.license      = { :type => 'MIT', :file => 'LICENSE' }
   spec.source       = { :git => "https://github.com/Alimama-TanxSDK/TanxSDK.git", :tag => "#{spec.version}" }
   spec.author       = { "tongyuecheng" => "wb-tyc866331@alibabapictures.com" }
-  spec.platform     = :ios, "10.0"
-  spec.ios.deployment_target = "10.0"
+  spec.platform     = :ios, "12.0"
+  spec.ios.deployment_target = "12.0"
 
   # 指向现有目录
   spec.vendored_frameworks = 'TanxSDK/TanxSDK.library/*.framework'
