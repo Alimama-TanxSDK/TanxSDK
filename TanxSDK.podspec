@@ -16,17 +16,6 @@ TanxSDK is a product provided by Alibaba Group for monetizing advertisements for
   spec.vendored_frameworks = 'TanxSDK/TanxSDK.library/*.framework'
   spec.resources = ['TanxSDK/TanxSDK.library/TanxSDK.framework/TanxID.bundle/**/*']
 
-  # 将 Info.plist 文件添加到 podspec
-  spec.info_plist = {
-    "CFBundleIdentifier" => "com.alibaba.TanxSDK",
-    "CFBundleVersion" => spec.version,
-    "CFBundleShortVersionString" => spec.version,
-    "CFBundleName" => "TanxSDK",
-    "NSCameraUsageDescription" => "This app requires access to the camera.",
-    "NSPhotoLibraryUsageDescription" => "This app requires access to your photo library.",
-    "NSLocationWhenInUseUsageDescription" => "This app requires access to your location."
-  }
-
   # 添加以下代码将构建限制在 iOS
   spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
