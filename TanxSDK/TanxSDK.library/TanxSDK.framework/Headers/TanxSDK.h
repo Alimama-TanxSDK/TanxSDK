@@ -10,26 +10,36 @@
 // In this header, you should import all the public headers of your framework using statements like #import <TanxSDK/PublicHeader.h>
 
 // Core
-#import "TXAdSDKInitializtion.h"
-#import "TXAdSDKConfiguration.h"
+#import <TanxSDK/TXAdSDKInitializtion.h>
+#import <TanxSDK/TXAdSDKConfiguration.h>
+
+#import <TanxSDK/TXAdManagerDelegate.h>
+#import <TanxSDK/TXAdModel.h>
+#import <TanxSDK/TXAdBidModel.h>
 
 // Biz
-#import "TXAdFeedManager.h"
-#import "TXAdFeedManagerDelegate.h"
-#import "TXAdShowModeModel.h"
+#import <TanxSDK/TXAdFeedManager.h>
+#import <TanxSDK/TXAdFeedManagerDelegate.h>
+#import <TanxSDK/TXAdShowModeModel.h>
 
-#import "TXAdFeedTemplateConfig.h"
-#import "TXAdFeedBinder.h"
-#import "TXAdFeedView.h"
-#import "TXAdSplashManager.h"
-#import "TXAdSplashManagerDelegate.h"
-#import "TXAdModel.h"
-#import "TXAdBidModel.h"
-#import "TXAdSplashTemplateConfig.h"
-#import "TXAdRewardManager.h"
-
-#import "TXAdTableScreenManager.h"
-#import "TXAdTestInterface.h"
+#import <TanxSDK/TXAdFeedTemplateConfig.h>
+#import <TanxSDK/TXAdFeedBinder.h>
+#import <TanxSDK/TXAdFeedView.h>
 
 
+#import <TanxSDK/TXAdSplashTemplateConfig.h>
+#import <TanxSDK/TXAdRewardManager.h>
 
+#import <TanxSDK/TXAdTableScreenManager.h>
+#import <TanxSDK/TXAdTestInterface.h>
+
+#import <TanxSDK/TXAdSplashView.h>
+#import <TanxSDK/TXAdSplashBinder.h>
+#import <TanxSDK/TXAdSplashSlotModel.h>
+#import <TanxSDK/TXAdSplashManagerDelegate.h>
+#import <TanxSDK/TXAdSplashManager.h>
+
+#import <TanxSDK/TXAdFeedPlayerView.h>
+#import <TanxSDK/TXAdJSONModelClassProperty.h>
+#import <TanxSDK/TXAdWebController.h>
+#import <TanxSDK/TXAdWebView.h>

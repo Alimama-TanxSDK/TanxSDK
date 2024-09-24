@@ -23,6 +23,9 @@
 /// 摇一摇功能是否关闭在退后台时，默认：YES
 @property (nonatomic, assign) BOOL needCloseShakeOnAppBackground;
 
+/// 开启实时请求，默认：NO
+@property (nonatomic, assign) BOOL needRequestRealTime;
+
 /**----------------------------------- 模版UI配置 ------------------------------------**/
 /// 跳转按钮颜色
 @property (nonatomic, strong) UIColor *jumpTitleColor;

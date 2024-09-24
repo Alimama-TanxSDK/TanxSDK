@@ -8,18 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "TXAdJSONModel.h"
+#import "TXAdPublicMacro.h"
 
-typedef NS_ENUM(NSInteger ,TanXAdType) {
-    TanXAdTypeUnknown = -1,       // 异常广告数据
-    TanXAdTypeSplash = 1,         // 开屏广告
-    TanXAdTypeFeedImage,          // 信息流广告-图片，适合信息流场景
-    TanXAdTypeFeedVideo,          // 信息流广告-自渲染视频，适合信息流场景
-    TanXAdTypeRewardVideo,        // 激励广告-视频（当前app内展示），展示整个屏幕
-    TanXAdTypeTableScreen,        // 插屏广告，展示整个屏幕
-    TanXAdTypeRewardBrowse,       // 激励广告-浏览（当前app内展示）
-    TanXAdTypeRewardArousal,      // 激励广告-换端（唤端其他app展示，失败-当前app内展示）
-    TanXAdTypeFeedImmersiveVideo, // 信息流广告-自渲染视频，9:16沉浸式视频，适合类似抖音、快手视频场景
-};
 
 @class TXAdBidModel;
 
@@ -47,7 +37,7 @@ typedef NS_ENUM(NSInteger ,TanXAdType) {
 @property (nonatomic, assign, readonly) NSTimeInterval end;
 
 /**
- *  对外媒体暴露，渲染素材数据（目前仅信息流自渲染会返回）
+ *  对外媒体暴露，渲染素材数据（目前仅开屏、信息流广告自渲染模式返回）
  *
  *  "title"                     :  "广告标题",
  *  "advName"           :  "广告主名称",
@@ -59,6 +49,12 @@ typedef NS_ENUM(NSInteger ,TanXAdType) {
  *  "smImageUrl"        : " 缩略图",                               // 可能为空
  *  "smImageWidth"   : "",                                           // 可能为空
  *  "smImageHeight"  :  "",                                          // 可能为空
+ *  "videoWidth"         :  "视频宽"  ,                             // 可能为空
+ *  "videoHeight"        :  "视频高",                               // 可能为空
+ *  "videoUrl"              :  "视频url",                               // 可能为空
+ *  "localVideoUrl"      :  "视频本地存储路径",              // 仅开屏自渲染返回，可能为空
+ *  "localImageUrl"     :  "图片本地存储路径",              // 仅开屏自渲染返回，可能为空
+ *
  */
 @property (nonatomic, copy, readonly)   NSDictionary *adMaterialDict;
 

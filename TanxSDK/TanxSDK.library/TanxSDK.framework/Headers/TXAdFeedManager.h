@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
+#import "TXAdPublicMacro.h"
 #import "TXAdFeedManagerDelegate.h"
 #import "TXAdFeedTemplateConfig.h"
 #import "TXAdFeedView.h"
@@ -20,20 +20,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// 渲染模式枚举
-typedef NS_ENUM(NSUInteger, TXAdFeedRenderMode) {
-    TXAdFeedRenderModeTemplate = 1,     // 模板渲染
-    TXAdFeedRenderModeCustom = 2,       // 自渲染
-};
-
-/// 广告类型
-typedef NS_ENUM(NSUInteger, TXAdFeedAdType) {
-    TXAdFeedAdTypeImage = 1,       // 图片广告
-    TXAdFeedAdTypeVideo = 2,       // 视频广告
-};
-
-/// 获取广告数据回调block
-typedef void(^TXAdFeedAdsBlock)(NSArray <TXAdModel *> * _Nullable viewModelArray, NSError * _Nullable error);
 
 @interface TXAdFeedModule : NSObject
 
@@ -83,8 +69,8 @@ typedef void(^TXAdFeedAdsBlock)(NSArray <TXAdModel *> * _Nullable viewModelArray
  *  @param adsBlock                 广告数据block
  */
 - (void)getFeedAdsWithAdCount:(NSInteger)adCount
-                   renderMode:(TXAdFeedRenderMode)renderMode
-                     adsBlock:(TXAdFeedAdsBlock)adsBlock;
+                   renderMode:(TXAdRenderMode)renderMode
+                     adsBlock:(TXGetAdDatasBlock)adsBlock;
 
 /**
  *  上报竞价结果（媒体如果选择竞价，则调用；不需要，则忽略）

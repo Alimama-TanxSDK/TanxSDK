@@ -15,8 +15,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^TXAdGetRewardAdsDataBlock)(NSArray <TXAdModel *> * _Nullable rewardAdModels, NSError * _Nullable error);
-
 @protocol TXAdRewardAdsDelegate <NSObject,TXAdManagerDelegate>
 @optional
 
@@ -84,7 +82,7 @@ typedef void(^TXAdGetRewardAdsDataBlock)(NSArray <TXAdModel *> * _Nullable rewar
  *
  * @param adsDataBlock  广告数据block
  */
-- (void)getRewardAdsWithAdsDataBlock:(TXAdGetRewardAdsDataBlock)adsDataBlock;
+- (void)getRewardAdsWithAdsDataBlock:(TXGetAdDatasBlock)adsDataBlock;
 
 /**
  * 上报竞价结果
