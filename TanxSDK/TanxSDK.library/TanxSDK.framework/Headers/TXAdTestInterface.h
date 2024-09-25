@@ -35,7 +35,6 @@
  */
 + (void)setAdRequestEnv:(NSUInteger)env;
 + (NSUInteger)getAdRequestEnv;
-
 @end
 
 

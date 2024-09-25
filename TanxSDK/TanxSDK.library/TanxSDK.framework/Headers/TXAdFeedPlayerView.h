@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TXAdModel.h"
+#import "TXAdFeedTemplateConfig.h"
 
 
 NS_ASSUME_NONNULL_BEGIN

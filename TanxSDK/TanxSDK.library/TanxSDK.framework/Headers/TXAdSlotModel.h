@@ -17,9 +17,6 @@
 /// 广告pid
 @property (nonatomic, copy) NSString *pid;
 
-/// 是否仅wifi下载视频素材，默认：NO
-@property (nonatomic, assign) BOOL downLoadAdVideoFilesOnWifi;
-
 @end
 
 

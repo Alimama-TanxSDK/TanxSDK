@@ -8,17 +8,19 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "TXAdSplashManagerDelegate.h"
-#import "TXAdPublicMacro.h"
+#import "TXAdModel.h"
+#import "TXAdSplashTemplateConfig.h"
+#import "TXAdSplashSlotModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class TXAdModel,TXAdSplashBinder,TXAdSplashSlotModel,TXAdSplashTemplateConfig;
-
+/// 获取广告数据回调block
+typedef void(^TXAdGetSplashAdDataBlock)(NSArray <TXAdModel *> * _Nullable splashModels, NSError * _Nullable error);
 
 @interface TXAdSplashManager : NSObject
 
 /// 代理需要实现的协议
-@property (nonatomic, weak) id <TXAdSplashManagerDelegate> delegate;
+@property (nonatomic, weak) id<TXAdSplashManagerDelegate> delegate;
 
 /// 初始化配置参数model
 @property (nonatomic, copy, readonly) TXAdSplashSlotModel *slotModel;
@@ -40,21 +42,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithPid:(NSString *)pid NS_DESIGNATED_INITIALIZER;
 
 /**
- *  发起获取开屏广告请求获取广告数据
- *（默认获取模版数据，模版数据不包含返回渲染的素材数据）
- *
- *  @param adsDataBlock    返回广告数据
+ *  预请求，接口已经废弃
  */
-- (void)getSplashAdsWithAdsDataBlock:(TXGetAdDatasBlock)adsDataBlock;
+- (void)preGetSplashAdData NS_UNAVAILABLE;
 
 /**
  *  发起获取开屏广告请求获取广告数据
  *
  *  @param adsDataBlock    返回广告数据
- *  @param renderMode         渲染模式（自渲染类型返回渲染所需素材数据）
  */
-- (void)getSplashAdsWithAdsDataBlock:(TXGetAdDatasBlock)adsDataBlock
-                          renderMode:(TXAdRenderMode)renderMode;
+- (void)getSplashAdsWithAdsDataBlock:(TXAdGetSplashAdDataBlock)adsDataBlock;
 
 /**
  *  上报竞价结果（媒体如果选择竞价，则调用；不需要，则忽略）
@@ -65,20 +62,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)uploadBidding:(TXAdModel *)model result:(BOOL)result;
 
 /**
- *  通过广告数据获取开屏广告模板View
+ *  通过广告数据获取开屏广告模板
  *
  *  @param model     开屏广告数据
  *  @return UIView   开屏广告模板
  */
 - (nullable UIView *)renderSplashTemplateWithAdModel:(TXAdModel *)model config:(TXAdSplashTemplateConfig *)config;
-
-/**
- *  媒体自己渲染广告UI，通过广告数据获取广告Binder
- *
- *  @param  model                           开屏广告数据
- *  @return TXAdSplashBinder        广告自渲染Binder
- */
-- (nullable TXAdSplashBinder *)customRenderingBinderWithModel:(TXAdModel *)model;
 
 /**
  *  删除本地缓存的开屏素材
