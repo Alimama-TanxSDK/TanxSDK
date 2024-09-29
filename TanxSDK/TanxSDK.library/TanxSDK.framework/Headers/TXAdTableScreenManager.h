@@ -18,8 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class TXAdTableScreenManager;
 
-typedef void(^TXAdGetTableScreenAdDataBlock)(NSArray <TXAdModel *> * _Nullable tableScreenModels, NSError * _Nullable error);
-
 @protocol TXAdTableScreenManagerDelegate <NSObject,TXAdManagerDelegate>
 
 @optional
@@ -59,7 +57,7 @@ typedef void(^TXAdGetTableScreenAdDataBlock)(NSArray <TXAdModel *> * _Nullable t
  * 发起插屏广告请求，获取广告数据
  * @param adsDataBlock 返回广告数据
  */
-- (void)getTableScreenAdsWithAdsDataBlock:(TXAdGetTableScreenAdDataBlock)adsDataBlock;
+- (void)getTableScreenAdsWithAdsDataBlock:(TXGetAdDatasBlock)adsDataBlock;
 
 /**
  * 上报竞价结果

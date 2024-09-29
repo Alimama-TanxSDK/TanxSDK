@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#import "TXAdModel.h"
-#import "TXAdFeedView.h"
-#import "TXAdFeedPlayerView.h"
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+
+@class TXAdFeedTemplateConfig,TXAdModel,TXAdFeedView,TXAdFeedPlayerView;
 
 @interface TXAdFeedBinder : NSObject
 
