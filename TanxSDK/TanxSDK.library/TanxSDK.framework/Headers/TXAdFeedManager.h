@@ -91,6 +91,18 @@ NS_ASSUME_NONNULL_BEGIN
                                                      config:(TXAdFeedTemplateConfig *)config;
 
 /**
+ *  通过广告数据获取广告模板
+ *
+ *  @param modelArray      广告数据
+ *  @param config               广告模版配置
+ *  @param error                 渲染错误error
+ *  @return NSArray             广告模板数组
+ */
+- (NSArray <TXAdFeedModule *> *)renderFeedTemplateWithModel:(NSArray <TXAdModel *> *)modelArray
+                                                     config:(TXAdFeedTemplateConfig *)config
+                                                      error:(NSError **)error;
+
+/**
  *  媒体自己渲染广告UI，通过广告数据获取广告Binder
  *
  *  @param modelArray      广告数据

@@ -19,17 +19,23 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 
 /**
- * 视频下载成功回调，仅激励视频回调（会回调多次）
- * @param model 数据model
+ *  视频下载成功回调（仅激励视频回调）
+ *  @param model 数据model
  */
 - (void)onAdDidDownLoadSuccessWithModel:(TXAdModel *)model;
 
 /**
- * 广告渲染失败回调
+ *  视频下载失败回调（仅激励视频回调）
+ *  @param model 数据model
+ */
+- (void)onAdDidDownLoadFailWithModel:(TXAdModel *)model;
+
+/**
+ * 已废弃
  * @param error 错误
  * @param model 数据model
  */
-- (void)onAdDidShowFailError:(NSError *)error withModel:(TXAdModel *)model;
+- (void)onAdDidShowFailError:(NSError *)error withModel:(TXAdModel *)model NS_UNAVAILABLE;
 
 /**
  * 广告跳过回调
@@ -97,10 +103,12 @@ NS_ASSUME_NONNULL_BEGIN
  *      0、广告数据类型是视频， onAdDidDownLoadSuccessWithModel: 回调过后调用
  *      1、广告数据是换端类型，会进行换端；失败，则展示普通激励广告
  *
- * @param viewController  当前所在VC
- * @param adModel                  广告数据model
+ * @param viewController  不能为nil，当前所在VC
+ * @param adModel                  不能为nil，广告数据model
+ * @return NSError                   校验admoel、vc，如错误返回错误信息
  */
-- (void)showAdFromRootViewController:(UIViewController *)viewController withModel:(TXAdModel *)adModel;
+- (nullable NSError *)showAdFromRootViewController:(UIViewController *)viewController
+                                         withModel:(TXAdModel *)adModel;
 
 /**
  *  查询发奖接口：
