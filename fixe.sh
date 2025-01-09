@@ -9,18 +9,14 @@ prompt_for_input() {
 # Step 1: 提交Podspec和二进制文件
 echo "提交Podspec和二进制文件到仓库中..."
 
-# Prompt for commit message and tag
-commit_message=$(prompt_for_input "请输入提交的信息: ")
-tag=$(prompt_for_input "请输入标签 (如1.0.0): ")
-
 # 添加所有更改到暂存区
 git add .
 
 # 提交这些更改并添加提交信息
-git commit -m "$commit_message"
+git commit -m "优化】开屏广告增加新模版id；"
 
 # 给提交打上标签
-git tag $tag
+git tag 3.6.7
 
 # 推送提交和标签到远程仓库
 git push origin master --tags
