@@ -31,13 +31,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onAdDidDownLoadFailWithModel:(TXAdModel *)model;
 
 /**
- * 已废弃
- * @param error 错误
- * @param model 数据model
- */
-- (void)onAdDidShowFailError:(NSError *)error withModel:(TXAdModel *)model NS_UNAVAILABLE;
-
-/**
  * 广告跳过回调
  * @param model 数据model
  */
@@ -48,7 +41,22 @@ NS_ASSUME_NONNULL_BEGIN
  * @param error nil代表播放成功
  * @param model 数据model
  */
-- (void)onAdDidFinishPlayingError:(nullable NSError *)error withModel:(TXAdModel *)model;
+- (void)onAdDidFinishPlayingError:(nullable NSError *)error
+                        withModel:(TXAdModel *)model NS_UNAVAILABLE;
+
+/**
+ * 激励视频播放完成
+ * @param model 数据model
+ */
+- (void)onAdDidPlayFinish:(TXAdModel *)model;
+
+/**
+ * 激励视频播放错误
+ * @param model 数据model
+ * @param error 播放错误
+ */
+- (void)onAdDidPlayFailed:(TXAdModel *)model
+                    error:(nullable NSError *)error;
 
 /**
  * 发奖回调，会调用多次
@@ -58,6 +66,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)onAdDidReceiveRewardInfo:(TXAdRewardVideoRewardInfo *)rewardInfo
                        withModel:(nullable TXAdModel *)model;
+
+/**
+ *  查询发奖接口请求完成回调
+ */
+- (void)onAdQueryRewardPrizeInfoComplete;
 
 @end
 
