@@ -8,10 +8,12 @@ TanxSDK支持主流样式覆盖和电商预算适配互动样式能力
 
 （2）信息流 
 【支持点击、滑动互动样式】：
+
   ![image](https://github.com/user-attachments/assets/ecc4edd8-7132-4cde-bfcc-f347f6383d4a)
 
 
 （3）激励广告
+
 ![image](https://github.com/user-attachments/assets/f709dd9f-458b-4d0d-93f4-6cb7a551e04b)
 
 支持激励广告类型：
@@ -39,5 +41,6 @@ TanxSDK支持主流样式覆盖和电商预算适配互动样式能力
 
 （3）广告样式创新
 ● 提供丰富的电商组件、权益等产品能力，提升变现效率。开发者适配成本低，可无感接入。
+
 3.详细文档链接
 https://alidocs.dingtalk.com/i/nodes/MNDoBb60VLYDGNPytwYZm271JlemrZQ3
