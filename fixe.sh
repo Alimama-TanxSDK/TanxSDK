@@ -13,13 +13,13 @@ echo "提交Podspec和二进制文件到仓库中..."
 git add .
 
 # 提交这些更改并添加提交信息
-git commit -m "优化】开屏广告增加新模版id；"
+git commit -am "【优化】信息流广告，支持播放器设置背景色；【修复】激励视频广告跳转落地页导航栏消失问题。"
 
 # 给提交打上标签
-git tag 3.6.7
+git tag 3.7.1
 
 # 推送提交和标签到远程仓库
-git push origin master --tags
+git push origin main --tags
 echo "提交到Git仓库完成。"
 echo
 

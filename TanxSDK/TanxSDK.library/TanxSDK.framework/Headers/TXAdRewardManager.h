@@ -67,6 +67,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onAdDidReceiveRewardInfo:(TXAdRewardVideoRewardInfo *)rewardInfo
                        withModel:(nullable TXAdModel *)model;
 
+/**
+ *  查询发奖接口请求完成回调
+ */
+- (void)onAdQueryRewardPrizeInfoComplete;
+
 @end
 
 @interface TXAdRewardManager : NSObject

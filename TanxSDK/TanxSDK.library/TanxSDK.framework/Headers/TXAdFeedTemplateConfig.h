@@ -53,6 +53,8 @@ typedef NS_ENUM(NSUInteger, TXAdPlayConfig) {
 
 @property (nonatomic, assign) BOOL showImgBeforeVideoPlay;  // 默认 YES，播放视频前使用兜底图展示
 
+@property (nonatomic, strong) UIColor *playerBackgroundColor; // 默认 黑色
+ 
 /// 下面属性loadingView、playView必须一起设置，单独设置不生效
 @property (nonatomic, strong) UIView *loadingView; // 播放视频加载时展示，不传使用sdk默认图片
 @property (nonatomic, strong) UIView *playView;    // 播放器暂停时展示，不传使用sdk默认图片
