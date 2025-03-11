@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "TanxSDK"
-  spec.version      = "3.7.1"
+  spec.version      = "3.7.2"
   spec.summary      = "an adSDK for media"
   spec.description  = <<-DESC
 TanxSDK is a product provided by Alibaba Group for monetizing advertisements for external media.

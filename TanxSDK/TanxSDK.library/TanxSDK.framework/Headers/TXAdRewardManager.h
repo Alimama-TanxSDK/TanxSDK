@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
                     error:(nullable NSError *)error;
 
 /**
- * 发奖回调，会调用多次
+ * 发奖回调（激励视频、激励浏览回调，仅回调一次）
  * @param rewardInfo 发奖信息（优先使用rewardInfo.rewardInfoDict的数据，
  *                          如rewardInfoDict为nil，使用model确定是哪个广告）
  * @param model 数据model
@@ -68,7 +68,14 @@ NS_ASSUME_NONNULL_BEGIN
                        withModel:(nullable TXAdModel *)model;
 
 /**
- *  查询发奖接口请求完成回调
+ * 发奖回调（激励唤端回调，仅回调一次）
+ *
+ * @param list 发奖信息（会包含多个发奖信息 TXAdRewardVideoRewardInfo）
+ */
+- (void)onAdDidReceiveRewardInfoList:(NSArray *)list;
+
+/**
+ *  查询发奖接口请求完成回调（代表当次查询发奖完成）
  */
 - (void)onAdQueryRewardPrizeInfoComplete;
 
