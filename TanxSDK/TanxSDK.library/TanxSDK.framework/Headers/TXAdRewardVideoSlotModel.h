@@ -46,6 +46,8 @@ typedef NS_ENUM(NSUInteger, TXAdRewardVideoAdDefaultAudioState) {
 /// 激励视频开始播放时，音频默认状态，可设成以静音状态开始播放。
 @property (nonatomic, assign) TXAdRewardVideoAdDefaultAudioState defaultAudioState;
 
+@property (nonatomic, strong) UIColor *playerBackgroundColor; // 默认 黑色
+
 @end
 
 NS_ASSUME_NONNULL_END

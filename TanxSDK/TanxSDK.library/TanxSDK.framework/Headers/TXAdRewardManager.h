@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onAdDidSkipWithModel:(TXAdModel *)model;
 
 /**
- * 激励视频播放完成或者出错
+ * 激励视频播放完成或者出错，废弃中
  * @param error nil代表播放成功
  * @param model 数据model
  */
@@ -75,9 +75,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onAdDidReceiveRewardInfoList:(NSArray *)list;
 
 /**
- *  查询发奖接口请求完成回调（代表当次查询发奖完成）
+ *  查询发奖接口请求完成回调（代表当次查询发奖完成）废弃中
  */
-- (void)onAdQueryRewardPrizeInfoComplete;
+- (void)onAdQueryRewardPrizeInfoComplete NS_UNAVAILABLE;
 
 @end
 
