@@ -33,6 +33,9 @@
 /// 广告类型
 @property (nonatomic, assign) TanXAdType adType;
 
+/// 广告的样式ID
+@property (nonatomic,   copy, readonly) NSString *pidStyleId;
+
 @property (nonatomic, assign, readonly) NSTimeInterval start;
 @property (nonatomic, assign, readonly) NSTimeInterval end;
 

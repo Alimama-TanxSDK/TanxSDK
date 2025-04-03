@@ -10,6 +10,12 @@
 
 @class TXAdModel;
 
+/// 广告页面打开方式
+typedef NS_ENUM(NSInteger, TXAdViewOpenType) {
+    TXAdViewOpenTypePush      = 1,
+    TXAdViewOpenTypePresent   = 2,
+};
+
 /// 渲染模式枚举
 typedef NS_ENUM(NSUInteger, TXAdRenderMode) {
     /// 模板渲染

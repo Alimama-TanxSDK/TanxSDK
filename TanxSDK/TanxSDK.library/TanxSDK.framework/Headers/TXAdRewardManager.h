@@ -125,10 +125,12 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param viewController  不能为nil，当前所在VC
  * @param adModel                  不能为nil，广告数据model
+ * @param openType                不能为nil，如果传入Vc没有navigationController，则使用present方式打开
  * @return NSError                   校验admoel、vc，如错误返回错误信息
  */
 - (nullable NSError *)showAdFromRootViewController:(UIViewController *)viewController
-                                         withModel:(TXAdModel *)adModel;
+                                         withModel:(TXAdModel *)adModel
+                                          openType:(TXAdViewOpenType)openType;
 
 /**
  *  查询发奖接口：
