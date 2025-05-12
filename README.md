@@ -52,7 +52,7 @@ https://alidocs.dingtalk.com/i/nodes/MNDoBb60VLYDGNPytwYZm271JlemrZQ3
 1. 添加依赖：
 
 ```ruby
-pod 'TanxSDK'版本
+pod 'TanxSDK'
 ```
 
 2. 添加必要的post_install钩子（**重要**）：
