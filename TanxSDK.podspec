@@ -2,25 +2,22 @@ Pod::Spec.new do |s|
   s.platform = :ios
   s.ios.deployment_target = '12.0'
   s.name = 'TanxSDK'
-  s.version  = "3.7.3"
-  s.summary = 'TanxSDK'
-  s.description = 'TanxSDK for iOS'
-  s.homepage = 'http://gitlab.alibaba-inc.com/alimamaad/TanxSDK-iOS'
-  s.license = {
-    :type => 'Copyright',
-    :text => <<-LICENSE
-              Alibaba-Inc copyright
-    LICENSE
-  }
-  s.requires_arc = true
-  s.authors = {'author'=>'jiangtao.wd@alibaba-inc.com'}
-  s.source = {:git=>'git@gitlab.alibaba-inc.com:alimamaad/TanxSDK-iOS.git'}
+  s.version  = "3.7.8"
+  s.summary = "an adSDK for media"
+  s.description = <<-DESC
+TanxSDK is a product provided by Alibaba Group for monetizing advertisements for external media.
+  DESC
+
+  s.author = { "tongyuecheng" => "wb-tyc866331@alibabapictures.com" }
+  s.homepage = 'https://github.com/Alimama-TanxSDK/TanxSDK.git'
+  s.license = { :type => 'MIT', :file => 'LICENSE' }
+  s.source = { :git => "https://github.com/Alimama-TanxSDK/TanxSDK.git", :tag => "#{s.version}" }
   
-  # 正确处理框架 - 将所有框架一次性定义
+  # 正确处理框架
   s.vendored_frameworks = [
-    'TanxSDK.framework',
-    'TNXASDK.framework',
-    'TanxMonitor.xcframework'
+    'TanxSDK/TanxSDK.library/TanxSDK.framework',
+    'TanxSDK/TanxSDK.library/TNXASDK.framework',
+    'TanxSDK/TanxSDK.library/TanxMonitor.xcframework'
   ]
   
   # 为 XCFramework 专门添加配置
@@ -29,30 +26,28 @@ Pod::Spec.new do |s|
     'EXCLUDED_ARCHS[sdk=iphoneos*]' => 'i386 armv7 armv7s',
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'armv7 armv7s',
     'OTHER_LDFLAGS' => '-ObjC',
-    # 添加通用框架搜索路径
-    'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/TanxSDK',
-    # 同时保留特定SDK的框架搜索路径，但添加$(inherited)以保留所有其他路径
-    'FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]' => '$(inherited) $(PODS_ROOT)/TanxSDK $(PODS_ROOT)/TanxSDK/TanxMonitor.xcframework/ios-arm64',
-    'FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]' => '$(inherited) $(PODS_ROOT)/TanxSDK $(PODS_ROOT)/TanxSDK/TanxMonitor.xcframework/ios-arm64_x86_64-simulator',
-    'HEADER_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/TanxSDK/TanxMonitor.xcframework/**/Headers',
+    'FRAMEWORK_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}/TanxSDK/TanxSDK.library"',
+    'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}/TanxSDK/TanxSDK.library/TanxSDK.framework/Headers" "${PODS_ROOT}/TanxSDK/TanxSDK.library/TNXASDK.framework/Headers"'
   }
 
   # 修复用户target配置
   s.user_target_xcconfig = {
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'armv7 armv7s',
-    # 添加通用框架搜索路径
-    'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/TanxSDK',
-    # 同时保留特定SDK的框架搜索路径，但添加$(inherited)以保留所有其他路径
-    'FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]' => '$(inherited) $(PODS_ROOT)/TanxSDK $(PODS_ROOT)/TanxSDK/TanxMonitor.xcframework/ios-arm64',
-    'FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]' => '$(inherited) $(PODS_ROOT)/TanxSDK $(PODS_ROOT)/TanxSDK/TanxMonitor.xcframework/ios-arm64_x86_64-simulator',
-    'HEADER_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/TanxSDK/TanxMonitor.xcframework/**/Headers',
-    # 添加正确的链接标志
-    'OTHER_LDFLAGS' => '$(inherited) -ObjC -framework TanxMonitor'
+    'FRAMEWORK_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}/TanxSDK/TanxSDK.library"',
+    'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}/TanxSDK/TanxSDK.library/TanxSDK.framework/Headers" "${PODS_ROOT}/TanxSDK/TanxSDK.library/TNXASDK.framework/Headers"',
+    'OTHER_LDFLAGS' => '$(inherited) -ObjC -framework TanxSDK -framework TNXASDK'
   }
 
   # 添加资源文件
-  s.resources = [
-    'TanxSDK.framework/TanxID.bundle',
-    'TanxSDK.framework/PrivacyInfo.xcprivacy'
+  s.resources = ['TanxSDK/TanxSDK.library/TanxSDK.framework/TanxID.bundle/**/*']
+
+  # 保留所有文件路径
+  s.preserve_paths = [
+    'TanxSDK/TanxSDK.library/TanxSDK.framework',
+    'TanxSDK/TanxSDK.library/TNXASDK.framework',
+    'TanxSDK/TanxSDK.library/TanxMonitor.xcframework'
   ]
+  
+  s.exclude_files = 'TanxSDK/TanxSDK.library/**/*.md'
+  s.source_files = 'TanxSDK/TanxSDK.library/TanxSDK.framework/Headers/*.h'
 end
