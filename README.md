@@ -44,3 +44,83 @@ TanxSDK支持主流样式覆盖和电商预算适配互动样式能力
 
 3.详细文档链接
 https://alidocs.dingtalk.com/i/nodes/MNDoBb60VLYDGNPytwYZm271JlemrZQ3
+
+4.接入方式
+
+(1) 使用CocoaPods依赖
+
+1. 添加依赖：
+
+```ruby
+pod 'TanxSDK'版本
+```
+
+2. 添加必要的post_install钩子（**重要**）：
+
+```ruby
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      # 确保SDK特定的搜索路径包含所有需要的框架路径
+      if config.build_settings['FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]'] 
+        config.build_settings['FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]'] = config.build_settings['FRAMEWORK_SEARCH_PATHS']
+      end
+      if config.build_settings['FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]']
+        config.build_settings['FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]'] = config.build_settings['FRAMEWORK_SEARCH_PATHS']
+      end
+      
+      # 修复模拟器架构问题 - 确保模拟器只使用x86_64架构
+      if config.name == 'Debug' || config.name == 'Release'
+        config.build_settings['VALID_ARCHS[sdk=iphonesimulator*]'] = 'x86_64'
+        config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64 armv7 armv7s'
+      end
+    end
+  end
+  
+  # 自动修复TanxMonitor.xcframework引用问题
+  system <<-SHELL
+    # 修复xcconfig文件
+    echo "修复xcconfig文件..."
+    sed -i '' 's/-framework "TanxMonitor\\.xcframework"//' ./Pods/Target\\ Support\\ Files/Pods-*/Pods-*.debug.xcconfig
+    sed -i '' 's/-framework "TanxMonitor\\.xcframework"//' ./Pods/Target\\ Support\\ Files/Pods-*/Pods-*.release.xcconfig
+    
+    # 修复模拟器架构设置
+    echo "修复模拟器架构设置..."
+    sed -i '' 's/EXCLUDED_ARCHS\\[sdk=iphonesimulator\\*\\] = armv7 armv7s/EXCLUDED_ARCHS\\[sdk=iphonesimulator\\*\\] = armv7 armv7s arm64/' ./Pods/Target\\ Support\\ Files/Pods-*/Pods-*.debug.xcconfig
+    sed -i '' 's/EXCLUDED_ARCHS\\[sdk=iphonesimulator\\*\\] = armv7 armv7s/EXCLUDED_ARCHS\\[sdk=iphonesimulator\\*\\] = armv7 armv7s arm64/' ./Pods/Target\\ Support\\ Files/Pods-*/Pods-*.release.xcconfig
+    
+    # 添加模拟器有效架构设置
+    for config_file in ./Pods/Target\ Support\ Files/Pods-*/Pods-*.{debug,release}.xcconfig; do
+      grep -q "VALID_ARCHS\\[sdk=iphonesimulator\\*\\]" "$config_file" || echo "VALID_ARCHS[sdk=iphonesimulator*] = x86_64" >> "$config_file"
+    done
+  SHELL
+end
+```
+
+3. 安装依赖：
+
+```bash
+pod install
+```
+(2) 注意事项
+
+1. **必须添加post_install钩子**：这是确保TanxSDK及其依赖的TanxMonitor.xcframework能正确编译的关键步骤。
+2. **支持的平台**：SDK支持iOS 12.0及以上版本。
+3. **架构支持**：
+   - 真机: arm64
+   - 模拟器: x86_64
+
+## 常见问题
+
+1. **编译错误 `-framework "TanxMonitor.xcframework"`**: 
+   确保使用了上述post_install钩子。
+
+2. **模拟器运行问题**:
+   检查架构设置是否正确配置。
+
+3. **符号链接问题**:
+   如果在项目目录下发现TanxMonitor.xcframework符号链接，可以安全删除，因为真正的框架文件已在Pods/TanxSDK/目录下。
+
+## 联系支持
+
+如有任何问题，请联系：xuanjing.wjt@taobao.com
