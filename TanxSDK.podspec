@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.platform = :ios
   s.ios.deployment_target = '12.0'
   s.name = 'TanxSDK'
-  s.version  = "3.7.12"
+  s.version  = "3.7.13"
   s.summary = "an adSDK for media"
   s.description = <<-DESC
 TanxSDK is a product provided by Alibaba Group for monetizing advertisements for external media.
