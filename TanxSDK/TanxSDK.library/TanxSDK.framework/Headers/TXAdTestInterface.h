@@ -22,7 +22,7 @@
 
 /* ----------- splash Caches action ----------- */
 + (NSArray *)splash_getMaterials;
-+ (NSString *)splash_loadResponse:(NSString *)pid;
++ (void)splash_loadResponse:(NSString *)pid completion:(void (^)(NSString *response))completion;
 + (void)splash_saveResponse:(NSString *)res pid:(NSString *)pid;
 + (void)splash_deleteResponse:(NSString *)pid;
 + (void)splash_deleteMaterial:(NSString *)path;

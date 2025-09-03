@@ -33,6 +33,9 @@
 /// 广告类型
 @property (nonatomic, assign) TanXAdType adType;
 
+/// 渲染方式
+@property (nonatomic, assign) TXAdRenderMode renderMode;
+
 /// 广告的样式ID
 @property (nonatomic,   copy, readonly) NSString *pidStyleId;
 
