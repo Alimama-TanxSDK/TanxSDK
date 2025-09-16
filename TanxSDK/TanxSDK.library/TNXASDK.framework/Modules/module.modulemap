@@ -1,6 +1,0 @@
-framework module TNXASDK {
-  umbrella header "TNXASDK.h"
-
-  export *
-  module * { export * }
-}
