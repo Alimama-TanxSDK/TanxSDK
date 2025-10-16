@@ -6,9 +6,9 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class TanxMonitorTanxMonitorManager, TanxMonitorTanxMonitorModel, TanxMonitorTanxMonitorConfig, TanxMonitorTanxMonitorSingleUrlModel, TanxMonitorTanxMonitorType, TanxMonitorKotlinEnumCompanion, TanxMonitorKotlinEnum<E>, TanxMonitorKotlinArray<T>, TanxMonitorContainerType, NSObject, TanxMonitorTaskExecutor, TanxMonitorTimerTask, TanxMonitorAppLifecycleManagerCompanion, TanxMonitorLogCompanion, TanxMonitorLogUtilCompanion, TanxMonitorTanxAdMonitorTrackCompanion, TanxMonitorTanxConstantCompanion, TanxMonitorTanxFileUtilCompanion, TanxMonitorTanxJsonUtil, TanxMonitorTanxPlatformUtilCompanion, TanxMonitorTanxResponse, TanxMonitorTanxUrlUtilCompanion, TanxMonitorTanxUtUtil;
+@class TanxMonitorTanxMonitorManager, TanxMonitorTanxMonitorModel, TanxMonitorTanxMonitorConfig, TanxMonitorTanxMonitorSingleUrlModel, TanxMonitorTanxMonitorType, TanxMonitorTanxMonitorTypeCompanion, TanxMonitorContainerTypeCompanion, TanxMonitorContainerType, NSObject, TanxMonitorTaskExecutor, TanxMonitorTimerTask, TanxMonitorAppLifecycleManagerCompanion, TanxMonitorLogCompanion, TanxMonitorLogUtilCompanion, TanxMonitorTanxConstantCompanion, TanxMonitorTanxFileUtilCompanion, TanxMonitorTanxJsonUtil, TanxMonitorTanxPlatformUtilCompanion, TanxMonitorTanxResponse, TanxMonitorTanxUrlUtilCompanion, TanxMonitorTanxUtUtil;
 
-@protocol TanxMonitorITanxMonitorTracker, TanxMonitorITanxCommitStatus, TanxMonitorKotlinComparable, TanxMonitorKMPTaskExecutor, TanxMonitorKMPTimerTask, TanxMonitorIAppLifecycleListener, TanxMonitorKotlinIterator;
+@protocol TanxMonitorITanxMonitorTracker, TanxMonitorITanxCommitStatus, TanxMonitorKMPTaskExecutor, TanxMonitorKMPTimerTask, TanxMonitorIAppLifecycleListener;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -215,39 +215,40 @@ __attribute__((swift_name("TanxMonitorSingleUrlModel")))
 @property NSString *handledUrl __attribute__((swift_name("handledUrl")));
 @property BOOL isRetry __attribute__((swift_name("isRetry")));
 @property NSString *originUrl __attribute__((swift_name("originUrl")));
+@property TanxMonitorTanxMonitorModel * _Nullable parent __attribute__((swift_name("parent")));
 @property int32_t retryTimes __attribute__((swift_name("retryTimes")));
 @property NSString *urlHash __attribute__((swift_name("urlHash")));
 @end
 
-__attribute__((swift_name("KotlinComparable")))
-@protocol TanxMonitorKotlinComparable
-@required
-- (int32_t)compareToOther:(id _Nullable)other __attribute__((swift_name("compareTo(other:)")));
-@end
-
-__attribute__((swift_name("KotlinEnum")))
-@interface TanxMonitorKotlinEnum<E> : TanxMonitorBase <TanxMonitorKotlinComparable>
-- (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) TanxMonitorKotlinEnumCompanion *companion __attribute__((swift_name("companion")));
-- (int32_t)compareToOther:(E)other __attribute__((swift_name("compareTo(other:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("TanxMonitorType")))
+@interface TanxMonitorTanxMonitorType : TanxMonitorBase
+@property (class, readonly, getter=companion) TanxMonitorTanxMonitorTypeCompanion *companion __attribute__((swift_name("companion")));
 @property (readonly) NSString *name __attribute__((swift_name("name")));
-@property (readonly) int32_t ordinal __attribute__((swift_name("ordinal")));
 @end
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("TanxMonitorType")))
-@interface TanxMonitorTanxMonitorType : TanxMonitorKotlinEnum<TanxMonitorTanxMonitorType *>
+__attribute__((swift_name("TanxMonitorType.Companion")))
+@interface TanxMonitorTanxMonitorTypeCompanion : TanxMonitorBase
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-- (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
-@property (class, readonly) TanxMonitorTanxMonitorType *click __attribute__((swift_name("click")));
-@property (class, readonly) TanxMonitorTanxMonitorType *expose __attribute__((swift_name("expose")));
-@property (class, readonly) TanxMonitorTanxMonitorType *interact __attribute__((swift_name("interact")));
-+ (TanxMonitorKotlinArray<TanxMonitorTanxMonitorType *> *)values __attribute__((swift_name("values()")));
-@property (class, readonly) NSArray<TanxMonitorTanxMonitorType *> *entries __attribute__((swift_name("entries")));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) TanxMonitorTanxMonitorTypeCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmStatic
+*/
+- (TanxMonitorTanxMonitorType *)fromOrdinalOrdinal:(int32_t)ordinal __attribute__((swift_name("fromOrdinal(ordinal:)")));
+
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmStatic
+*/
+- (TanxMonitorTanxMonitorType *)fromStringValue:(NSString *)value __attribute__((swift_name("fromString(value:)")));
+@property (readonly) TanxMonitorTanxMonitorType *CLICK __attribute__((swift_name("CLICK")));
+@property (readonly) TanxMonitorTanxMonitorType *EXPOSE __attribute__((swift_name("EXPOSE")));
+@property (readonly) TanxMonitorTanxMonitorType *INTERACT __attribute__((swift_name("INTERACT")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -261,17 +262,34 @@ __attribute__((swift_name("Concurrent")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("ContainerType")))
-@interface TanxMonitorContainerType : TanxMonitorKotlinEnum<TanxMonitorContainerType *>
+@interface TanxMonitorContainerType : TanxMonitorBase
+@property (class, readonly, getter=companion) TanxMonitorContainerTypeCompanion *companion __attribute__((swift_name("companion")));
+@property (readonly) int32_t value __attribute__((swift_name("value")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("ContainerType.Companion")))
+@interface TanxMonitorContainerTypeCompanion : TanxMonitorBase
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-- (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
-@property (class, readonly) TanxMonitorContainerType *kserial __attribute__((swift_name("kserial")));
-@property (class, readonly) TanxMonitorContainerType *kparallel __attribute__((swift_name("kparallel")));
-@property (class, readonly) TanxMonitorContainerType *kmain __attribute__((swift_name("kmain")));
-@property (class, readonly) TanxMonitorContainerType *kglobal __attribute__((swift_name("kglobal")));
-+ (TanxMonitorKotlinArray<TanxMonitorContainerType *> *)values __attribute__((swift_name("values()")));
-@property (class, readonly) NSArray<TanxMonitorContainerType *> *entries __attribute__((swift_name("entries")));
-@property (readonly) int32_t value __attribute__((swift_name("value")));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) TanxMonitorContainerTypeCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmStatic
+*/
+- (TanxMonitorContainerType *)fromStringName:(NSString *)name __attribute__((swift_name("fromString(name:)")));
+
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmStatic
+*/
+- (TanxMonitorContainerType *)fromValueValue:(int32_t)value __attribute__((swift_name("fromValue(value:)")));
+@property (readonly) TanxMonitorContainerType *KGlobal __attribute__((swift_name("KGlobal")));
+@property (readonly) TanxMonitorContainerType *KMain __attribute__((swift_name("KMain")));
+@property (readonly) TanxMonitorContainerType *KParallel __attribute__((swift_name("KParallel")));
+@property (readonly) TanxMonitorContainerType *KSerial __attribute__((swift_name("KSerial")));
 @end
 
 __attribute__((swift_name("KMPTaskExecutor")))
@@ -395,21 +413,6 @@ __attribute__((swift_name("LogUtil.Companion")))
 - (void)eTag:(NSString *)tag method:(NSString *)method message:(NSString *)message __attribute__((swift_name("e(tag:method:message:)")));
 @end
 
-__attribute__((swift_name("TanxAdMonitorTrack")))
-@protocol TanxMonitorTanxAdMonitorTrack
-@required
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("TanxAdMonitorTrackCompanion")))
-@interface TanxMonitorTanxAdMonitorTrackCompanion : TanxMonitorBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) TanxMonitorTanxAdMonitorTrackCompanion *shared __attribute__((swift_name("shared")));
-- (void)commitEventPage:(id)page eventID:(int32_t)eventID arg1:(NSString * _Nullable)arg1 arg2:(NSString * _Nullable)arg2 arg3:(NSString * _Nullable)arg3 args:(NSDictionary<NSString *, id> * _Nullable)args __attribute__((swift_name("commitEvent(page:eventID:arg1:arg2:arg3:args:)")));
-@end
-
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("TanxConstant")))
 @interface TanxMonitorTanxConstant : TanxMonitorBase
@@ -426,6 +429,7 @@ __attribute__((swift_name("TanxConstant.Companion")))
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) TanxMonitorTanxConstantCompanion *shared __attribute__((swift_name("shared")));
 @property (readonly) NSString *FILE_NAME __attribute__((swift_name("FILE_NAME")));
+@property (readonly) NSString *SUCCESS_URL_HASH_FILE_NAME __attribute__((swift_name("SUCCESS_URL_HASH_FILE_NAME")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -443,6 +447,7 @@ __attribute__((swift_name("TanxFileUtil.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) TanxMonitorTanxFileUtilCompanion *shared __attribute__((swift_name("shared")));
+- (void)deleteFileFileName:(NSString *)fileName __attribute__((swift_name("deleteFile(fileName:)")));
 - (NSString *)getFilePath __attribute__((swift_name("getFilePath()")));
 - (NSString *)readFromFileFileName:(NSString *)fileName __attribute__((swift_name("readFromFile(fileName:)")));
 - (void)writeToFileFileName:(NSString *)fileName content:(NSString *)content __attribute__((swift_name("writeToFile(fileName:content:)")));
@@ -455,8 +460,10 @@ __attribute__((swift_name("TanxJsonUtil")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)tanxJsonUtil __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) TanxMonitorTanxJsonUtil *shared __attribute__((swift_name("shared")));
-- (NSArray<TanxMonitorTanxMonitorSingleUrlModel *> *)decodeMonitorModelsString:(NSString *)string __attribute__((swift_name("decodeMonitorModels(string:)")));
+- (NSArray<TanxMonitorTanxMonitorSingleUrlModel *> * _Nullable)decodeMonitorModelsString:(NSString *)string __attribute__((swift_name("decodeMonitorModels(string:)")));
+- (NSSet<NSString *> *)decodeStringSetString:(NSString *)string __attribute__((swift_name("decodeStringSet(string:)")));
 - (NSString *)encodeMonitorModelsModels:(NSArray<TanxMonitorTanxMonitorSingleUrlModel *> *)models __attribute__((swift_name("encodeMonitorModels(models:)")));
+- (NSString *)encodeStringSetSet:(NSSet<NSString *> *)set __attribute__((swift_name("encodeStringSet(set:)")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -508,7 +515,6 @@ __attribute__((swift_name("TanxUrlUtil.Companion")))
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) TanxMonitorTanxUrlUtilCompanion *shared __attribute__((swift_name("shared")));
 - (NSString *)getUriHostUri:(NSString *)uri __attribute__((swift_name("getUriHost(uri:)")));
-- (NSDictionary<NSString *, id> *)parseUriUri:(NSString *)uri __attribute__((swift_name("parseUri(uri:)")));
 - (NSString *)replaceMacrosUrl:(NSString *)url macros:(NSDictionary<NSString *, NSString *> *)macros __attribute__((swift_name("replaceMacros(url:macros:)")));
 @end
 
@@ -520,6 +526,7 @@ __attribute__((swift_name("TanxUtUtil")))
 + (instancetype)tanxUtUtil __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) TanxMonitorTanxUtUtil *shared __attribute__((swift_name("shared")));
 - (void)commitArg1:(NSString *)arg1 args:(TanxMonitorMutableDictionary<NSString *, NSString *> *)args __attribute__((swift_name("commit(arg1:args:)")));
+- (void)exposeExceptionMsg:(NSString *)msg __attribute__((swift_name("exposeException(msg:)")));
 - (void)exposeInvalidUrlModel:(TanxMonitorTanxMonitorModel *)model errMsg:(NSString *)errMsg __attribute__((swift_name("exposeInvalidUrl(model:errMsg:)")));
 - (void)exposeInvokeErrorModel:(TanxMonitorTanxMonitorModel *)model errMsg:(NSString *)errMsg __attribute__((swift_name("exposeInvokeError(model:errMsg:)")));
 - (void)exposeInvokeSuccessModel:(TanxMonitorTanxMonitorModel *)model __attribute__((swift_name("exposeInvokeSuccess(model:)")));
@@ -527,34 +534,6 @@ __attribute__((swift_name("TanxUtUtil")))
 - (void)exposeRequestFailModel:(TanxMonitorTanxMonitorSingleUrlModel *)model host:(NSString *)host urlHash:(NSString *)urlHash __attribute__((swift_name("exposeRequestFail(model:host:urlHash:)")));
 - (void)exposeRequestSuccessModel:(TanxMonitorTanxMonitorSingleUrlModel *)model host:(NSString *)host urlHash:(NSString *)urlHash __attribute__((swift_name("exposeRequestSuccess(model:host:urlHash:)")));
 - (void)exposeStartRequestModel:(TanxMonitorTanxMonitorModel *)model host:(NSString *)host urlHash:(NSString *)urlHash __attribute__((swift_name("exposeStartRequest(model:host:urlHash:)")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("KotlinEnumCompanion")))
-@interface TanxMonitorKotlinEnumCompanion : TanxMonitorBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) TanxMonitorKotlinEnumCompanion *shared __attribute__((swift_name("shared")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("KotlinArray")))
-@interface TanxMonitorKotlinArray<T> : TanxMonitorBase
-+ (instancetype)arrayWithSize:(int32_t)size init:(T _Nullable (^)(TanxMonitorInt *))init __attribute__((swift_name("init(size:init:)")));
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-- (T _Nullable)getIndex:(int32_t)index __attribute__((swift_name("get(index:)")));
-- (id<TanxMonitorKotlinIterator>)iterator __attribute__((swift_name("iterator()")));
-- (void)setIndex:(int32_t)index value:(T _Nullable)value __attribute__((swift_name("set(index:value:)")));
-@property (readonly) int32_t size __attribute__((swift_name("size")));
-@end
-
-__attribute__((swift_name("KotlinIterator")))
-@protocol TanxMonitorKotlinIterator
-@required
-- (BOOL)hasNext __attribute__((swift_name("hasNext()")));
-- (id _Nullable)next __attribute__((swift_name("next()")));
 @end
 
 #pragma pop_macro("_Nullable_result")
