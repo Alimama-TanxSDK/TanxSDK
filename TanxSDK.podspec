@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.platform = :ios
   s.ios.deployment_target = '12.0'
   s.name = 'TanxSDK'
-  s.version  = "3.7.19"
+  s.version  = "3.7.20"
   s.summary = "an adSDK for media"
   s.description = <<-DESC
 TanxSDK is a product provided by Alibaba Group for monetizing advertisements for external media.
@@ -16,7 +16,7 @@ TanxSDK is a product provided by Alibaba Group for monetizing advertisements for
   # 正确处理框架
   s.vendored_frameworks = [
     'TanxSDK/TanxSDK.library/TanxSDK.framework',
-    'TanxSDK/TanxSDK.library/TNXASDK.framework',
+    'TanxSDK/TanxSDK.library/TNXASDK.xcframework',
     'TanxSDK/TanxSDK.library/TanxMonitor.xcframework'
   ]
   
@@ -35,7 +35,7 @@ TanxSDK is a product provided by Alibaba Group for monetizing advertisements for
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'armv7 armv7s',
     'FRAMEWORK_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}/TanxSDK/TanxSDK.library"',
     'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}/TanxSDK/TanxSDK.library/TanxSDK.framework/Headers" "${PODS_ROOT}/TanxSDK/TanxSDK.library/TNXASDK.framework/Headers"',
-    'OTHER_LDFLAGS' => '$(inherited) -ObjC -framework TanxSDK -framework TNXASDK'
+    'OTHER_LDFLAGS' => '$(inherited) -ObjC'
   }
 
   # 添加资源文件
