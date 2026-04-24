@@ -26,6 +26,9 @@
 /// 开启实时请求，默认：NO
 @property (nonatomic, assign) BOOL needRequestRealTime;
 
+/// 预览模式下跳过本地缓存，直接使用此列表中的素材 id 向服务端请求
+@property (nonatomic, copy, nullable) NSArray<NSString *> *previewCreatives;
+
 /**----------------------------------- 模版UI配置 ------------------------------------**/
 /// 跳转按钮颜色
 @property (nonatomic, strong) UIColor *jumpTitleColor;

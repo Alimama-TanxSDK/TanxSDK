@@ -64,4 +64,16 @@
  */
 @property (nonatomic, copy, readonly)   NSDictionary *adMaterialDict;
 
+/**
+ *  服务端透传的扩展数据字典（目前仅开屏广告返回）
+ *
+ *  字典中包含以下字段（均为字符串类型）：
+ *  "is_preview"         :  是否为预览广告，"1" 表示是，"0" 表示否
+ *  "prodtype"           :  产品类型
+ *  "sale_product_id"  :  销售产品ID
+ *  "track_id"            :  追踪ID
+ *
+ */
+@property (nonatomic, copy, readonly) NSDictionary *extendData;
+
 @end

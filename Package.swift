@@ -15,18 +15,18 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "TanxSDKBinary",
-            url: "https://github.com/Alimama-TanxSDK/TanxSDK/releases/download/3.7.26/TanxSDK.xcframework.zip",
-            checksum: "0f18002f09c409a5d977cae8e40298374be6ea41fff4044f17bc73f81fc06df4"
+            url: "https://github.com/Alimama-TanxSDK/TanxSDK/releases/download/3.7.27/TanxSDK.xcframework.zip",
+            checksum: "c971e32482acff3920065ac64a641d06632cb229114b63dadf048bc9ca1e2724"
         ),
         .binaryTarget(
             name: "TNXASDK",
-            url: "https://github.com/Alimama-TanxSDK/releases/download/3.7.26/TNXASDK.xcframework.zip",
-            checksum: "0bfe2bb2a8843394c0a3eca7652fe580e0c404a07f2b18f4d71e9b0999d04938"
+            url: "https://github.com/Alimama-TanxSDK/TanxSDK/releases/download/3.7.27/TNXASDK.xcframework.zip",
+            checksum: "57acc1e8eb6262220f3bca0d3c87abafef8489d4d2e01d85d8efd290f06453b5"
         ),
         .binaryTarget(
             name: "TanxMonitor",
-            url: "https://github.com/Alimama-TanxSDK/releases/download/3.7.26/TanxMonitor.xcframework.zip",
-            checksum: "4ef853880d6db57fa6f44d218b7e2a35b3ca89002b6eecc805e406ae166bb6fd"
+            url: "https://github.com/Alimama-TanxSDK/TanxSDK/releases/download/3.7.27/TanxMonitor.xcframework.zip",
+            checksum: "ae943dd34b6a37beb66c47cefe6b68f2be1b817e5f69e1648837e6b3054cb06f"
         ),
 
         // Wrapper：用于携带资源（TanxID.bundle）并依赖二进制 TanxSDK

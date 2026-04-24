@@ -55,7 +55,7 @@ TanxSDK支持主流样式覆盖和电商预算适配互动样式能力
 
 2. 使用Swift包管理器  
 - [Swift Package Manager](https://swift.org/package-manager/) (SwiftPM) 是一款用于管理 Swift 代码及 C 语言系列依赖项分发的工具。从 Xcode 11 开始，SwiftPM 已原生集成到 Xcode 中。  
-- TanxSDK 从 3.7.26 版本开始支持 SwiftPM。要使用 SwiftPM，请使用 Xcode 11 以上版本打开项目。点击 `File` -> `Swift Packages` -> `Add Package Dependency`，输入[TanxSDK 仓库的 URL](https://github.com/Alimama-TanxSDK/TanxSDK.git)。或登录 Xcode 的 GitHub 帐户后直接输入TanxSDK进行搜索。  
+- TanxSDK 从 3.7.27 版本开始支持 SwiftPM。要使用 SwiftPM，请使用 Xcode 11 以上版本打开项目。点击 `File` -> `Swift Packages` -> `Add Package Dependency`，输入[TanxSDK 仓库的 URL](https://github.com/Alimama-TanxSDK/TanxSDK.git)。或登录 Xcode 的 GitHub 帐户后直接输入TanxSDK进行搜索。  
 - 选择包后，您可以配置依赖版本。然后 Xcode 会自动为您完成所有设置。
 
 3. 注意事项  
