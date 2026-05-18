@@ -75,6 +75,20 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onAdDidReceiveRewardInfoList:(NSArray *)list;
 
 /**
+ * 订单确认收货查询回调
+ *
+ * @param list 收货信息（会包含多个 TXAdRewardVideoRewardInfo，task_type=3 的下单任务）
+ */
+- (void)onAdDidReceiveOrderSuccessList:(NSArray *)list;
+
+/**
+ * 订单退款/退单查询回调
+ *
+ * @param list 退单信息（会包含多个 TXAdRewardVideoRewardInfo，task_type=3 的下单任务）
+ */
+- (void)onAdDidReceiveOrderCloseList:(NSArray *)list;
+
+/**
  *  查询发奖接口请求完成回调（代表当次查询发奖完成）废弃中
  */
 - (void)onAdQueryRewardPrizeInfoComplete NS_UNAVAILABLE;
@@ -142,6 +156,26 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)queryRewardPrizeInfoWithMediaUid:(NSString *)mediaUid
                                 pidsList:(NSArray *)pidsList;
+
+/**
+ *  查询订单确认收货接口：
+ *      通过delegate方法 onAdDidReceiveOrderSuccessList: 返回确认收货的session_id列表
+ *
+ *  @param mediaUid   接入方用户id；必传
+ *  @param pidsList   广告pid数组；必传
+ */
+- (void)queryOrderSuccessWithMediaUid:(NSString *)mediaUid
+                             pidsList:(NSArray *)pidsList;
+
+/**
+ *  查询订单退款/退单接口：
+ *      通过delegate方法 onAdDidReceiveOrderCloseList: 返回退单的session_id列表
+ *
+ *  @param mediaUid   接入方用户id；必传
+ *  @param pidsList   广告pid数组；必传
+ */
+- (void)queryOrderCloseWithMediaUid:(NSString *)mediaUid
+                           pidsList:(NSArray *)pidsList;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;

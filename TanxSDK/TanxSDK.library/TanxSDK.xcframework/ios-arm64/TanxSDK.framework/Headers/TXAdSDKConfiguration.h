@@ -25,6 +25,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 媒体自定义用户质量,字段格式{"key":["value"]}
 @property (nonatomic, strong) NSDictionary<NSString *,NSArray *> * userTag;
 
+/// 广告请求环境配置，YES 时请求走预发线，NO 时请求走正式线，默认 NO（线上）。
+/// ⚠️ 注意：必须在调用 SDK 初始化接口之前设置，SDK 初始化完成后修改此属性将不会生效。
+/// 上线前请确保此值为 NO 或不设置，避免线上流量误请求预发环境。
+@property (nonatomic, assign) BOOL testEnv;
+
 /// 单例初始化
 + (instancetype)sharedConfiguration;
 
